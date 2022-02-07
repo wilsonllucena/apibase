@@ -1,7 +1,7 @@
-import { User } from './entities/user.entity';
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
@@ -24,7 +24,7 @@ export class UsersService {
   }
 
   async getByEmail(email: string) {
-    return await this.userModel.findOne({ email }).exec();
+    return await this.userModel.findOne({ email });
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {

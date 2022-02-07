@@ -9,14 +9,6 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
-    if (!req?.user) {
-      return new Error('User not found');
-    }
-
-    if (!req.user.email || !req.user.password) {
-      return new Error('Email or password invalid');
-    }
-
     return this.authService.login(req.user);
   }
 

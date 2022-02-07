@@ -1,8 +1,9 @@
-import { AuthController } from './auth/auth.controller';
+import { AuthController } from './modules/auth/auth.controller';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+
 import 'dotenv/config';
 
 @Module({

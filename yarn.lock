@@ -1455,6 +1455,11 @@ at-least-node@^1.0.0:
   resolved "https://registry.npmjs.org/at-least-node/-/at-least-node-1.0.0.tgz"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
+auto-bind@^1.1.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/auto-bind/-/auto-bind-1.2.1.tgz#807f7910b0210db9eefe133f3492c28e89698b96"
+  integrity sha512-/W9yj1yKmBLwpexwAujeD9YHwYmRuWFGV8HWE7smQab797VeHa4/cnE2NFeDhA+E+5e/OGBI8763EhLjfZ/MXA==
+
 axios@0.24.0:
   version "0.24.0"
   resolved "https://registry.npmjs.org/axios/-/axios-0.24.0.tgz"
@@ -3938,6 +3943,15 @@ mongodb@4.2.2:
   optionalDependencies:
     saslprep "^1.0.3"
 
+mongoose-repository@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/mongoose-repository/-/mongoose-repository-0.2.0.tgz#2d9cdfceb5bc98ebd771c146a32dc0783939a5d4"
+  integrity sha512-mdGkl1pRBD7gkTffPMAweKh4BBhCAIQKttnn1POGbQwtwqMKV/b+q7l24et8HNeco5wt1lk2vaGFQKDijbGwDQ==
+  dependencies:
+    auto-bind "^1.1.0"
+    polygoat "1.1.4"
+    transform-props "1.0.1"
+
 mongoose@^6.1.7:
   version "6.1.7"
   resolved "https://registry.npmjs.org/mongoose/-/mongoose-6.1.7.tgz"
@@ -4313,6 +4327,11 @@ pluralize@8.0.0:
   version "8.0.0"
   resolved "https://registry.npmjs.org/pluralize/-/pluralize-8.0.0.tgz"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
+
+polygoat@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/polygoat/-/polygoat-1.1.4.tgz#329f9a0d1b2d4a45149e2539523c6f7dfd850a5f"
+  integrity sha1-Mp+aDRstSkUUniU5Ujxvff2FCl8=
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -5065,6 +5084,11 @@ tr46@~0.0.3:
   version "0.0.3"
   resolved "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz"
   integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
+
+transform-props@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/transform-props/-/transform-props-1.0.1.tgz#c98ea32d76031f9b83561b1575dffb58b39a7b1c"
+  integrity sha1-yY6jLXYDH5uDVhsVdd/7WLOaexw=
 
 tree-kill@1.2.2:
   version "1.2.2"

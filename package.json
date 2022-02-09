@@ -33,6 +33,7 @@
     "class-validator": "^0.13.2",
     "dotenv": "^14.2.0",
     "mongoose": "^6.1.7",
+    "mongoose-repository": "^0.2.0",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

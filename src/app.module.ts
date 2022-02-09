@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { ProductsModule } from './modules/products/products.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 
 import 'dotenv/config';
 
@@ -18,6 +19,7 @@ import 'dotenv/config';
     AuthModule,
     UsersModule,
     ProductsModule,
+    CategoriesModule,
   ],
   controllers: [AuthController],
   providers: [

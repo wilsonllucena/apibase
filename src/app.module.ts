@@ -1,20 +1,30 @@
+import { APP_PIPE } from '@nestjs/core';
+import { ValidationPipe } from './shared/pipes/validation.pipe';
+import { database } from './config/constants';
 import { AuthController } from './modules/auth/auth.controller';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
+import { ProductsModule } from './modules/products/products.module';
 
 import 'dotenv/config';
 
 @Module({
   imports: [
     MongooseModule.forRoot(
-      `mongodb+srv://admin:${process.env.DATABASE_PASS}@cluster0.p9cvk.mongodb.net/${process.env.DATABASE_NAME}`,
+      `mongodb+srv://admin:2a4tmohPxvZHNLLa@cluster0.p9cvk.mongodb.net/poc_store`,
     ),
     AuthModule,
     UsersModule,
+    ProductsModule,
   ],
   controllers: [AuthController],
-  providers: [],
+  providers: [
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
+  ],
 })
 export class AppModule {}

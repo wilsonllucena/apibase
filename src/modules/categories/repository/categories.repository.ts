@@ -24,6 +24,10 @@ export class CategoryRepository implements Repository {
     return await this.categoryModel.findOne({ _id: id });
   }
 
+  async findByName(name: string): Promise<Category> {
+    return await this.categoryModel.findOne({ name });
+  }
+
   async update(id: string, updateCategoryDto: UpdateCategoryDto): Promise<any> {
     return await this.categoryModel.updateOne({ _id: id }, updateCategoryDto);
   }

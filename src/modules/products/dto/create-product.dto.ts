@@ -1,3 +1,4 @@
+import { Category } from './../../categories/entities/category.entity';
 import { IsNotEmpty, IsInt } from 'class-validator';
 
 export class CreateProductDto {
@@ -7,7 +8,7 @@ export class CreateProductDto {
   description: string;
 
   @IsNotEmpty()
-  category: string;
+  category: Category;
 
   img?: string;
 
@@ -15,7 +16,6 @@ export class CreateProductDto {
 
   color: string;
 
-  @IsNotEmpty()
   @IsInt()
-  price: number;
+  price?: number;
 }

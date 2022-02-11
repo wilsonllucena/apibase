@@ -1,17 +1,18 @@
+import { Category } from './../../categories/entities/category.entity';
 import { IsNotEmpty, IsInt } from 'class-validator';
 
 export class UpdateProductDto {
-  title: string;
+  title?: string;
 
-  description: string;
+  description?: string;
 
-  category: string;
+  category?: Category;
 
   img?: string;
 
   size?: string;
 
-  color: string;
+  color?: string;
 
-  price: number;
+  price?: number;
 }

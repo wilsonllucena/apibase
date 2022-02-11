@@ -1,6 +1,5 @@
 import { APP_PIPE } from '@nestjs/core';
 import { ValidationPipe } from './shared/pipes/validation.pipe';
-import { database } from './config/constants';
 import { AuthController } from './modules/auth/auth.controller';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -24,7 +23,7 @@ import 'dotenv/config';
   controllers: [AuthController],
   providers: [
     {
-      provide: APP_PIPE,
+      provide: [APP_PIPE],
       useClass: ValidationPipe,
     },
   ],

@@ -7,7 +7,13 @@ import { CategoryRepository } from './repository/categories.repository';
 export class CategoriesService {
   constructor(private readonly categoryRepository: CategoryRepository) {}
 
-  create(createCategoryDto: CreateCategoryDto) {
+  async create(createCategoryDto: CreateCategoryDto) {
+    const category = await this.categoryRepository.findByName(
+      createCategoryDto.name,
+    );
+    if (category) {
+      throw new Error('Category already exists');
+    }
     return this.categoryRepository.create(createCategoryDto);
   }
 

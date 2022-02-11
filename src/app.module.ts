@@ -1,5 +1,5 @@
 import { APP_PIPE } from '@nestjs/core';
-import { ValidationPipe } from './shared/pipes/validation.pipe';
+import { ValidationPipe } from './pipes/validation.pipe';
 import { AuthController } from './modules/auth/auth.controller';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';

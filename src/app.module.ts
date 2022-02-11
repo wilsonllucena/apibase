@@ -23,7 +23,7 @@ import 'dotenv/config';
   controllers: [AuthController],
   providers: [
     {
-      provide: [APP_PIPE],
+      provide: APP_PIPE,
       useClass: ValidationPipe,
     },
   ],

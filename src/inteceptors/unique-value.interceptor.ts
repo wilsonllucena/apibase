@@ -15,7 +15,7 @@ export class UniqueValueInterceptor implements NestInterceptor {
     return next.handle().pipe(
       catchError((error) => {
         if (error instanceof AlreadyExistsException) {
-          error = new HttpException(error.message, HttpStatus.BAD_REQUEST);
+          error = new HttpException(error.message, HttpStatus.CONFLICT);
         }
 
         throw error;

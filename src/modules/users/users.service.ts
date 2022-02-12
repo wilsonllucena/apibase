@@ -1,3 +1,4 @@
+import { NotFoundError } from './../../errors/NotFoundError';
 import { AlreadyExistsError } from './../../errors/AlreadyExistsError';
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
@@ -24,18 +25,34 @@ export class UsersService {
   }
 
   async findOne(id: string) {
-    return await this.userModel.findOne({ _id: id });
+    const user = await this.userModel.findOne({ _id: id });
+    if (!user) {
+      throw new NotFoundError('User not found');
+    }
+    return user;
   }
 
   async getByEmail(email: string) {
+    const user = await this.userModel.findOne({ email: email });
+    if (!user) {
+      throw new NotFoundError('User not found');
+    }
     return await this.userModel.findOne({ email });
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
+    const user = await this.userModel.findOne({ _id: id });
+    if (!user) {
+      throw new NotFoundError('User not found');
+    }
     return await this.userModel.updateOne({ _id: id }, updateUserDto);
   }
 
-  async remove(id: string) {
-    return await this.userModel.deleteOne({ _id: id });
+  async remove(id: string): Promise<void> {
+    const user = await this.userModel.findOne({ _id: id });
+    if (!user) {
+      throw new NotFoundError('User not found');
+    }
+    await user.delete();
   }
 }

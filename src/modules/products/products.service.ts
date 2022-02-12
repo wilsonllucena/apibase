@@ -1,3 +1,4 @@
+import { NotFoundError } from './../../errors/NotFoundError';
 import { AlreadyExistsError } from './../../errors/AlreadyExistsError';
 import { Product } from './schema/products.schema';
 import { Injectable } from '@nestjs/common';
@@ -23,13 +24,24 @@ export class ProductsService {
   }
 
   async findOne(id: string): Promise<Product> {
-    return await this.productModel.findOne({ _id: id });
+    const product = await this.productModel.findOne({ _id: id });
+    if (!product) {
+      throw new NotFoundError('Product not found');
+    }
+
+    return product;
   }
 
   async update(id: string, updateProductDto: UpdateProductDto) {
+    const productExists = await this.productModel.findOne({ _id: id });
+    if (!productExists) {
+      throw new NotFoundError('Product not found');
+    }
+
     if (await this.productModel.findOne({ title: updateProductDto.title })) {
       throw new AlreadyExistsError('Product already exists');
     }
+
     const product = await this.productModel.updateOne(
       { _id: id },
       updateProductDto,
@@ -37,7 +49,12 @@ export class ProductsService {
     return product;
   }
 
-  async remove(id: string) {
-    return await this.productModel.deleteOne({ _id: id });
+  async remove(id: string): Promise<void> {
+    const product = await this.productModel.findOne({ _id: id });
+    if (!product) {
+      throw new NotFoundError('Product not found');
+    }
+
+    await product.delete();
   }
 }

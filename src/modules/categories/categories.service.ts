@@ -1,4 +1,4 @@
-import { AlreadyExistsException } from '../../errors/AlreadyExistsException';
+import { AlreadyExistsError } from './../../errors/AlreadyExistsError';
 import { Injectable } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
@@ -13,7 +13,7 @@ export class CategoriesService {
       createCategoryDto.name,
     );
     if (category) {
-      throw new AlreadyExistsException('Category already exists');
+      throw new AlreadyExistsError('Category already exists');
     }
     return this.categoryRepository.create(createCategoryDto);
   }
@@ -26,7 +26,7 @@ export class CategoriesService {
     return this.categoryRepository.findOne(id);
   }
 
-  update(id: string, updateCategoryDto: UpdateCategoryDto) {
+  async update(id: string, updateCategoryDto: UpdateCategoryDto) {
     return this.categoryRepository.update(id, updateCategoryDto);
   }
 

@@ -1,4 +1,4 @@
-import { AlreadyExistsException } from '../../errors/AlreadyExistsException';
+import { AlreadyExistsError } from './../../errors/AlreadyExistsError';
 import { Product } from './schema/products.schema';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -13,7 +13,7 @@ export class ProductsService {
   ) {}
   async create(createProductDto: CreateProductDto): Promise<Product> {
     if (await this.productModel.findOne({ title: createProductDto.title })) {
-      throw new AlreadyExistsException('Product already exists');
+      throw new AlreadyExistsError('Product already exists');
     }
     return await this.productModel.create(createProductDto);
   }
@@ -27,6 +27,9 @@ export class ProductsService {
   }
 
   async update(id: string, updateProductDto: UpdateProductDto) {
+    if (await this.productModel.findOne({ title: updateProductDto.title })) {
+      throw new AlreadyExistsError('Product already exists');
+    }
     const product = await this.productModel.updateOne(
       { _id: id },
       updateProductDto,

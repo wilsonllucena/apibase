@@ -1,4 +1,6 @@
-import { AlreadyExistsException } from '../errors/AlreadyExistsException';
+import { AlreadyExistsError } from './../errors/AlreadyExistsError';
+import { MongoServerError } from 'mongodb';
+
 import {
   Injectable,
   NestInterceptor,
@@ -14,8 +16,15 @@ export class UniqueValueInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<Error> {
     return next.handle().pipe(
       catchError((error) => {
-        if (error instanceof AlreadyExistsException) {
+        if (error instanceof AlreadyExistsError) {
           error = new HttpException(error.message, HttpStatus.CONFLICT);
+        }
+
+        if (error instanceof MongoServerError) {
+          const field = error.message.split('index: ');
+          if (error.code.toString() === '11000') {
+            error = new HttpException(field[1], HttpStatus.CONFLICT);
+          }
         }
 
         throw error;

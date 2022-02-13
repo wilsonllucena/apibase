@@ -1,3 +1,4 @@
+import { CartModule } from './modules/cart/cart.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ValidationPipe } from './pipes/validation.pipe';
 import { AuthController } from './modules/auth/auth.controller';
@@ -19,6 +20,7 @@ import 'dotenv/config';
     UsersModule,
     ProductsModule,
     CategoriesModule,
+    CartModule,
   ],
   controllers: [AuthController],
   providers: [

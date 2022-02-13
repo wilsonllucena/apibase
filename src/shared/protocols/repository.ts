@@ -1,7 +1,7 @@
 export interface Repository {
-  create(createDto: any): any;
-  findAll(): any;
-  findOne(id: string): any;
-  update(id: string, updateDto: any): any;
-  remove(id: string): any;
+  create(createDto: any): Promise<any>;
+  findAll(): Promise<any>;
+  findOne(id: string): Promise<any>;
+  update(id: string, updateDto: any): Promise<any>;
+  remove(id: string): Promise<any>;
 }

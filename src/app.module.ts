@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import { CartModule } from './modules/cart/cart.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ValidationPipe } from './pipes/validation.pipe';
@@ -8,8 +10,6 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { ProductsModule } from './modules/products/products.module';
 import { CategoriesModule } from './modules/categories/categories.module';
-
-import 'dotenv/config';
 
 @Module({
   imports: [

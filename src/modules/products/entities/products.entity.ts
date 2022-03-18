@@ -1,4 +1,4 @@
-import { Category } from './../../categories/entities/category.entity';
+import { Category } from '../../categories/entities/category.entity';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 export type ProductDocument = Product & Document;

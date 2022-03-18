@@ -1,26 +1,26 @@
-import { NotFoundError } from './../../errors/NotFoundError';
-import { AlreadyExistsError } from './../../errors/AlreadyExistsError';
-import { Product } from './schema/products.schema';
+import { NotFoundError } from '../../../errors/NotFoundError';
+import { AlreadyExistsError } from '../../../errors/AlreadyExistsError';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
+import { CreateProductDto } from '../dto/create-product.dto';
+import { UpdateProductDto } from '../dto/update-product.dto';
+import { Product } from '../entities/products.entity';
 
 @Injectable()
 export class ProductsService {
   constructor(
     @InjectModel(Product.name) private readonly productModel: Model<Product>,
   ) {}
-  async create(createProductDto: CreateProductDto): Promise<Product> {
-    if (await this.productModel.findOne({ title: createProductDto.title })) {
+  create(createProductDto: CreateProductDto): Promise<Product> {
+    if (this.productModel.findOne({ title: createProductDto.title })) {
       throw new AlreadyExistsError('Product already exists');
     }
-    return await this.productModel.create(createProductDto);
+    return this.productModel.create(createProductDto);
   }
 
   async findAll(): Promise<Product[]> {
-    return await this.productModel.find();
+    return this.productModel.find();
   }
 
   async findOne(id: string): Promise<Product> {

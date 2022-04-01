@@ -23,8 +23,8 @@ export class Product {
   @Prop()
   color: string;
 
-  @Prop({ default: 0 })
-  price?: number;
+  @Prop({ default: '0.00' })
+  price?: string;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

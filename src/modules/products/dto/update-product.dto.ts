@@ -14,5 +14,5 @@ export class UpdateProductDto {
 
   color?: string;
 
-  price?: number;
+  price?: string;
 }
